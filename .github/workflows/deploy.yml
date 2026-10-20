@@ -1,0 +1,88 @@
+# Hugo サイトをビルドして GitHub Pages にデプロイする
+# 参考: https://gohugo.io/host-and-deploy/host-on-github-pages/
+name: Deploy Hugo site to GitHub Pages
+
+on:
+  # main ブランチへのプッシュで実行
+  push:
+    branches:
+      - main
+  # Actions タブから手動実行も可能にする
+  workflow_dispatch:
+
+# GITHUB_TOKEN に Pages へのデプロイ権限を付与
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# デプロイは同時に1つだけ実行。進行中の本番デプロイはキャンセルしない
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # ローカル環境と同じバージョンに固定（PaperMod は 0.158.0 以上が必要）
+      HUGO_VERSION: 0.168.0
+      HUGO_ENVIRONMENT: production
+      TZ: Asia/Tokyo
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          curl -sSLo "${{ runner.temp }}/hugo.tar.gz" \
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+          mkdir -p "${{ runner.temp }}/hugo"
+          tar -xzf "${{ runner.temp }}/hugo.tar.gz" -C "${{ runner.temp }}/hugo"
+          echo "${{ runner.temp }}/hugo" >> "$GITHUB_PATH"
+
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          # PaperMod テーマ（git submodule）も取得する
+          submodules: recursive
+          # enableGitInfo を有効にした場合に備えて全履歴を取得
+          fetch-depth: 0
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v6
+
+      - name: Cache Hugo modules and resources
+        uses: actions/cache@v6
+        with:
+          path: ${{ runner.temp }}/hugo_cache
+          key: hugo-${{ runner.os }}-${{ hashFiles('**/*.toml', 'themes/**') }}
+          restore-keys: hugo-${{ runner.os }}-
+
+      - name: Build with Hugo
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+        run: |
+          hugo version
+          hugo \
+            --gc \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

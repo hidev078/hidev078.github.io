@@ -1,0 +1,86 @@
+baseURL = "https://hidev078.github.io/"
+title = "My Tech Notes"
+theme = "PaperMod"
+
+# ---- 日本語環境 ----
+locale = "ja-JP"
+defaultContentLanguage = "ja"
+timeZone = "Asia/Tokyo"
+# 日本語の文字数・要約・読了時間を正しく扱う（CJK判定）
+hasCJKLanguage = true
+summaryLength = 120
+
+enableRobotsTXT = true
+enableEmoji = true
+buildDrafts = false
+buildFuture = false
+
+# lastmod を Git のコミット日時から取得したい場合は true に（初回コミット後に有効化）
+enableGitInfo = false
+
+[pagination]
+  pagerSize = 10
+
+[languages]
+  [languages.ja]
+    label = "日本語"
+    weight = 1
+
+[params]
+  env = "production"
+  description = "技術メモを書きためるブログ"
+  author = "hidev"
+  # 日付表示: 2026年10月19日（Go の日付レイアウト）
+  DateFormat = "2006年1月2日"
+  defaultTheme = "auto"          # light / dark / auto
+  ShowReadingTime = true
+  ShowWordCount = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+  ShowLastMod = true
+
+  [params.homeInfoParams]
+    Title = "ようこそ 👋"
+    Content = "My Tech Notes へようこそ。日々の技術的な学びをメモしています。"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 10
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 20
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 30
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 40
+
+# 検索ページ用（PaperMod は JSON インデックスを使う）
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# 日付の決定ルール（lastmod は Git の更新日時を優先）
+[frontmatter]
+  date = ["date", "publishDate", "lastmod"]
+  lastmod = [":git", "lastmod", "date", "publishDate"]
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+    style = "monokai"
