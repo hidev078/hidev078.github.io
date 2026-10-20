@@ -1,5 +1,5 @@
 +++
-title = 'Claude Code に頼むだけ！初心者でもかんたんにブログを作る方法'
+title = 'Claude Codeに頼むだけ！初心者でもかんたんにHuGo＆Github Pagesでブログを作る方法'
 date = 2026-10-20T21:00:00+09:00
 draft = false
 tags = ['Hugo', 'Claude Code', 'GitHub Pages', '初心者向け']
