@@ -1,5 +1,5 @@
 baseURL = "https://hidev078.github.io/"
-title = "My Tech Notes"
+title = "ひでぶログ"
 theme = "PaperMod"
 
 # ---- 日本語環境 ----
@@ -45,7 +45,7 @@ enableGitInfo = false
 
   [params.homeInfoParams]
     Title = "ようこそ 👋"
-    Content = "My Tech Notes へようこそ。日々の技術的な学びをメモしています。"
+    Content = "ひでぶログへようこそ。日々の技術的な学びをメモしています。"
 
 [menu]
   [[menu.main]]

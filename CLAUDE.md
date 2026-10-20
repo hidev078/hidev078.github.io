@@ -2,7 +2,7 @@
 
 ## プロジェクト概要
 
-**My Tech Notes** — Hugo + PaperMod で構築した日本語の技術ブログ。
+**ひでぶログ** — Hugo + PaperMod で構築した日本語の技術ブログ。
 
 - 公開URL: https://hidev078.github.io/
 - リポジトリ: `hidev078/hidev078.github.io`（**Public**）
