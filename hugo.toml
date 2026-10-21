@@ -68,7 +68,7 @@ enableGitInfo = false   # true にすると lastmod を Git のコミット日�
 [params]
   env = "production"
   description = "技術メモを書きためるブログ"
-  author = "hidev"
+  author = "ひでぶ"
   DateFormat = "2006年1月2日"   # Go の日付レイアウト（例: 2026年10月21日）
   defaultTheme = "auto"         # light / dark / auto
 
