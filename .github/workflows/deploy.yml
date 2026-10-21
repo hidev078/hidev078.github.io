@@ -33,6 +33,9 @@ jobs:
       HUGO_VERSION: 0.168.0
       HUGO_ENVIRONMENT: production
       TZ: Asia/Tokyo
+      # Google Analytics（GA4）の測定 ID。公開サイトのビルドでだけ設定し、
+      # ローカルプレビュー（hugo server）では計測しない
+      HUGO_SERVICES_GOOGLEANALYTICS_ID: G-GFD2WR967D
     steps:
       - name: Install Hugo CLI
         run: |

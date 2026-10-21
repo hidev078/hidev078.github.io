@@ -71,6 +71,7 @@ git submodule update --remote themes/PaperMod   # テーマ更新（要ユーザ
 - `enableGitInfo = false`: 有効化すると `lastmod` を Git から取得する（CI は `fetch-depth: 0` 済み）
 - `[outputs] home = ["HTML", "RSS", "JSON"]`: JSON は検索ページに必須。削除しない
 - `markup.goldmark.renderer.unsafe = true`: 記事内の生 HTML がそのまま出力される（セキュリティ節を参照）
+- Google Analytics（GA4）の測定 ID は `hugo.toml` ではなく `.github/workflows/deploy.yml` の `HUGO_SERVICES_GOOGLEANALYTICS_ID` に設定している（公開サイトでだけ計測し、ローカルプレビューの閲覧を計測に混ぜないため）。`hugo.toml` に `[services.googleAnalytics]` を追加しない
 - メニューは `[[menu.main]]`（Home / Posts / Tags / About、`weight` 10 刻み）
 
 ## 6. 記事の書き方
