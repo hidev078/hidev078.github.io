@@ -53,10 +53,10 @@ git submodule update --remote themes/PaperMod   # テーマ更新（要ユーザ
 | `content/about.md` | About ページ（メニュー: About） |
 | `content/archives.md` / `content/search.md` | アーカイブ・検索ページ（`layout` 指定。メニュー非表示だが URL は有効） |
 | `archetypes/default.md` | 記事テンプレート |
-| `layouts/` | テーマの上書き（Hugo 0.146+ の新テンプレート構成: `_partials/`, `_shortcodes/`, `_markup/`） |
+| `layouts/` | （未作成・必要になったら作る）テーマの上書き（Hugo 0.146+ の新テンプレート構成: `_partials/`, `_shortcodes/`, `_markup/`） |
 | `assets/css/extended/custom.css` | 見た目の調整（文字サイズ・余白）。PaperMod が自動で読み込む。CSS の変更はここに追記する |
-| `static/` | そのまま配信するファイル（favicon、`robots.txt` 以外の静的ファイル） |
-| `i18n/` | 翻訳文言の上書き（`i18n/ja.yaml`） |
+| `static/` | （未作成・必要になったら作る）そのまま配信するファイル（favicon、`robots.txt` 以外の静的ファイル） |
+| `i18n/` | （未作成・必要になったら作る）翻訳文言の上書き（`i18n/ja.yaml`） |
 | `themes/PaperMod/` | テーマ本体（**直接編集禁止**） |
 | `.github/workflows/deploy.yml` | ビルド＆デプロイ |
 | `public/`, `resources/_gen/`, `.hugo_build.lock` | 生成物（`.gitignore` 済み。コミットしない） |
