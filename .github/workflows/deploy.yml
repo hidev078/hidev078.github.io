@@ -58,8 +58,8 @@ jobs:
         uses: actions/cache@v6
         with:
           path: ${{ runner.temp }}/hugo_cache
-          key: hugo-${{ runner.os }}-${{ hashFiles('**/*.toml', 'themes/**') }}
-          restore-keys: hugo-${{ runner.os }}-
+          key: hugo-${{ runner.os }}-${{ env.HUGO_VERSION }}-${{ hashFiles('hugo.toml', 'assets/**') }}
+          restore-keys: hugo-${{ runner.os }}-${{ env.HUGO_VERSION }}-
 
       - name: Build with Hugo
         env:

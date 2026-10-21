@@ -54,7 +54,7 @@ git submodule update --remote themes/PaperMod   # テーマ更新（要ユーザ
 | `content/archives.md` / `content/search.md` | アーカイブ・検索ページ（`layout` 指定。メニュー非表示だが URL は有効） |
 | `archetypes/default.md` | 記事テンプレート |
 | `layouts/` | テーマの上書き（Hugo 0.146+ の新テンプレート構成: `_partials/`, `_shortcodes/`, `_markup/`） |
-| `assets/` | Hugo Pipes で処理する CSS など（`assets/css/extended/*.css` は PaperMod が自動読込） |
+| `assets/css/extended/custom.css` | 見た目の調整（文字サイズ・余白）。PaperMod が自動で読み込む。CSS の変更はここに追記する |
 | `static/` | そのまま配信するファイル（favicon、`robots.txt` 以外の静的ファイル） |
 | `i18n/` | 翻訳文言の上書き（`i18n/ja.yaml`） |
 | `themes/PaperMod/` | テーマ本体（**直接編集禁止**） |
@@ -144,6 +144,8 @@ summary = '一覧・OGP に出る要約（120字程度）'
 - コミットメッセージは英語の命令形で 1 行目を簡潔に（例: `Add post about Hugo shortcodes`）
 - `git push --force`、`git reset --hard`、履歴の書き換え、ブランチ・リポジトリ・Pages 設定の削除や変更は、ユーザーの確認なしに行わない
 - submodule のポインタ（`themes/PaperMod`）は、テーマ更新を指示されたときだけ変更する
+- コミットの作者メールは GitHub の noreply アドレス（`git config user.email` で確認）。個人のメールアドレスでコミットしない（GitHub 側でもプッシュがブロックされる）
+- GitHub 上で直接編集されることがある。プッシュ前に `git fetch` し、リモートに新しいコミットがあれば `git pull --rebase` で取り込んでからプッシュする
 
 ## 10. セキュリティ（必ず守る）
 

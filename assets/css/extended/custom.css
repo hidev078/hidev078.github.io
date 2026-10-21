@@ -1,54 +1,68 @@
-/* 文字サイズを全体的に小さめに（PaperMod の既定値から約 1 割縮小） */
+/*
+ * PaperMod の見た目の調整（テーマより後に読み込まれる）
+ * コメントの「既定」は PaperMod の元の値
+ */
 
-/* 本文（既定 18px） */
+/* ---- 全体 ---- */
+
 body {
-    font-size: 16px;
+    font-size: 16px;   /* 既定 18px */
 }
 
-/* ヘッダー */
+/* ---- ヘッダー ---- */
+
 .logo a {
-    font-size: 23px;   /* 24px */
+    font-size: 23px;   /* 既定 24px */
 }
 
 .menu a {
-    font-size: 15px;   /* 16px */
+    font-size: 15px;   /* 既定 16px */
 }
 
-/* 一覧ページ */
+/* ---- ホーム・一覧ページ ---- */
+
+/* 「ようこそ」欄と記事一覧の間隔を詰める */
+.home-info {
+    min-height: auto;                 /* 既定 320px */
+    margin: var(--gap) 0 var(--gap) 0; /* 既定 下余白 48px */
+}
+
 .page-header h1 {
-    font-size: 36px;   /* 40px */
+    font-size: 36px;   /* 既定 40px */
 }
 
 .first-entry .entry-header h1 {
-    font-size: 31px;   /* 34px */
+    font-size: 31px;   /* 既定 34px */
 }
 
 .first-entry .entry-content {
-    font-size: 15px;   /* 16px */
+    font-size: 15px;   /* 既定 16px */
 }
 
 .entry-header h2 {
-    font-size: 23px;   /* 24px */
+    font-size: 23px;   /* 既定 24px */
 }
 
-/* 記事ページ */
+/* ---- 記事ページ ---- */
+
 .post-title {
-    font-size: 36px;   /* 40px */
+    font-size: 36px;   /* 既定 40px */
 }
 
 .md-content h1 {
-    font-size: 32px;   /* 40px */
+    font-size: 32px;   /* 既定 40px */
 }
 
 .md-content h2 {
-    font-size: 26px;   /* 32px */
+    font-size: 26px;   /* 既定 32px */
 }
 
 .md-content h3 {
-    font-size: 21px;   /* 24px */
+    font-size: 21px;   /* 既定 24px */
 }
 
-/* スマホ */
+/* ---- スマホ ---- */
+
 @media screen and (max-width: 768px) {
     .post-title,
     .page-header h1 {
@@ -58,10 +72,4 @@ body {
     .md-content h2 {
         font-size: 22px;
     }
-}
-
-/* ホームの「ようこそ」欄と記事一覧の間隔を詰める（既定: 高さ 320px 以上・下余白 48px） */
-.home-info {
-    min-height: auto;
-    margin: var(--gap) 0 var(--gap) 0;
 }
