@@ -125,10 +125,26 @@ Git で作業を記録（コミット）すると、**「誰が作業したか�
 
 続けるには、**自分で「この操作は OK」と許可を出す**必要があります。
 
-1. Claude Code に `/permissions` と入力する
-2. Claude Code に教えてもらった操作を「許可」に追加する
+1. Claude Code のプロンプトに `/permissions` と入力する
+2. 「**Allow**（許可）」のタブを選び、「**Add a new rule…**」を選ぶ
+3. Claude Code に教えてもらったルールを入力して追加する
 
-作業が終わったら、**許可は元に戻しておく**のがおすすめです。これも Claude Code にお願いすればやってくれます。
+今回追加したルールは、この 2 つです。
+
+```text
+Bash(git filter-branch:*)
+Bash(git push --force-with-lease origin main)
+```
+
+| ルール | 意味 |
+| --- | --- |
+| `Bash(git filter-branch:*)` | 過去の記録を書き換えるコマンドを許可する |
+| `Bash(git push --force-with-lease origin main)` | 書き換えた記録を GitHub に送る（上書きする）コマンドを許可する |
+
+追加すると、`Added allow rule Bash(git filter-branch:*)` のように表示されます。これで許可は完了です。
+
+作業が終わったら、**許可は元に戻しておく**のがおすすめです。
+もう一度 `/permissions` を開いて、追加した 2 つのルールを選んで削除します。「許可を削除して」と Claude Code にお願いしても、やってくれます。
 
 > 💡 **AI に任せきりにならず、大事なところは人間が判断する。**
 > この仕組みのおかげで、安心して任せられるなと感じました。
