@@ -1,3 +1,10 @@
 /public/
 /resources/_gen/
 .hugo_build.lock
+
+# 秘密情報（APIキーなど）
+.env
+.env.*
+!.env.example
+*.pem
+*.key
